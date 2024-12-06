@@ -10,8 +10,8 @@ bp = Blueprint("users", __name__, url_prefix="/usuarios")
     
 google = oauth.register(
         name='google',
-        client_id="41501282078-0df5crdiivgj0a5no3ke67rhf718t1rb.apps.googleusercontent.com",
-        client_secret="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",
+        client_id="secreto",
+        client_secret="secreto",
         access_token_url='https://accounts.google.com/o/oauth2/token',
         access_token_params=None,
         authorize_url='https://accounts.google.com/o/oauth2/auth',
