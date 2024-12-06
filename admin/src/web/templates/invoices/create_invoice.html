@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block title %}Crear Cobro{% endblock %}
+
+{% block content %}
+
+<header class="d-flex justify-content-between align-items-center mt-4 mb-3">
+    <h4 class="display-4">Registrar Nuevo Cobro</h4>
+    <a class="btn btn-secondary" href="{{ url_for('invoices.invoices_index') }}">Volver</a>
+</header>
+
+<body>
+    <form method="POST" action="{{ url_for('invoices.invoice_create') }}" id="invoice_form" class="form_style">
+        <div class="mb-3">
+            <label for="pay_date" class="form-label">Fecha de pago:</label>
+            <i class="fas fa-asterisk text-danger" title="Campo obligatorio"></i>
+            <input type="date" class="form-control" name="pay_date" required>
+        </div>
+        <div class="mb-3">
+            <label for="amount" class="form-label">Monto:</label>
+            <i class="fas fa-asterisk text-danger" title="Campo obligatorio"></i>
+            <input type="number" class="form-control" max="100000000.00" step="1" name="amount" placeholder="Ingrese un monto" required>
+        </div>
+        <div class="mb-3">
+            <label for="payment_method" class="form-label">Método de pago:</label>
+            <i class="fas fa-asterisk text-danger" title="Campo obligatorio"></i>
+            <select class="form-select" name="payment_method" required>
+                <option value="Efectivo">Efectivo</option>
+                <option value="Tarjeta de credito">Tarjeta de crédito</option>
+                <option value="Tarjeta de debito">Tarjeta de débito</option>
+                <option value="Otro">Otro</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="j&a" class="form-label">J&A:</label>
+            <i class="fas fa-asterisk text-danger" title="Campo obligatorio"></i>
+            <select class="form-select" name="j&a" required>
+                <option value="" disabled selected>Seleccione un J&A</option>
+                {% for ja in jinetes_amazonas %}
+                <option value="{{ ja.id }}">{{ ja.nombre }} {{ ja.apellido }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="recipient" class="form-label">Beneficiario:</label>
+            <i class="fas fa-asterisk text-danger" title="Campo obligatorio"></i>
+            <select class="form-select" name="recipient" required>
+                <option value="" disabled selected>Seleccione un beneficiario</option>
+                {% for emp in employees %}
+                <option value="{{ emp.id }}">{{ emp.nombre }} {{ emp.apellido }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="observations" class="form-label">Observaciones:</label>
+            <textarea class="form-control" id="observations" name="observations" placeholder="Observaciones opcionales" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Crear cobro</button>
+    </form>
+</body>
+
+{% endblock %}
