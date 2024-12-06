@@ -1,4 +1,4 @@
-# Sistema de administración privada y portal público para CEDICA.
+# Sistema de administración privado y portal público para CEDICA.
 
 ![](https://hips.hearstapps.com/hmg-prod/images/elm050121wlolivia-007-logo-1618513509.jpg)
 
